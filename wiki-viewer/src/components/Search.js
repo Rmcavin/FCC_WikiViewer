@@ -4,16 +4,20 @@ class Search extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {term: ''};
+    this.state = {term: ""};
   }
 
     render() {
     return (
       <div>
-        <input
-          placeholder = "search"
-          onChange = {event => this.onInputChange(event.target.value)} />
-        <button><a href = "https://en.wikipedia.org/wiki/Special:Random" target = "_blank" rel="noopener noreferrer">Random Article</a></button>
+        <div className = "searchContainer">
+          <input className = "searchBar"
+            placeholder = "Search"
+            onChange = {event => this.onInputChange(event.target.value)} />
+        </div>
+        <div className = "randomContainer">
+          <button className = "random"><a href = "https://en.wikipedia.org/wiki/Special:Random" target = "_blank" rel="noopener noreferrer">Random Article</a></button>
+        </div>
       </div>
         )
       }

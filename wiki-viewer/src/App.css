@@ -1,24 +1,91 @@
-.App {
-  text-align: center;
+body {
+  background-color: #DEE5E5;
+  height: 100%;
+  margin: 5px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
+.header {
+  background-color: #119DA4;
+  width: 50%;
+  margin: auto;
+  box-shadow: 3px 3px 5px rgb(159, 168, 163);
   padding: 20px;
-  color: white;
 }
 
-.App-intro {
-  font-size: large;
+h1 {
+  font-family: Garamond;
+  font-size: 48px;
+  text-align: center;
+  color: #DEE5E5;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.searchBar {
+  font-family: Garamond;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  height: 25px;
+  display: block;
+  margin: auto;
+  width: 80%;
+  margin-top: 60px;
+  box-shadow: 3px 3px 5px #0B6469;
+}
+
+.searchBar:focus {
+  outline: none;
+}
+
+.random {
+  font-family: Garamond;
+  font-size: 18px;
+  background-color: #DEE5E5;
+  box-shadow: 2px 2px 5px #0B6469;
+  padding: 10px;
+  display: block;
+  margin: 30px auto 30px auto;
+  border: none;
+}
+
+.random:hover {
+  box-shadow: 4px 4px 5px #0B6469;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(9,103,119);
+}
+
+h3 {
+  font-weight: bolder;
+}
+
+.wikiItem {
+  font-family: Garamond;
+  font-size: 18px;
+  background-color: #92D2D5;
+  width: 50%;
+  margin: 10px auto 10px auto;
+  padding: 20px;
+  box-shadow: 3px 3px 5px rgb(159, 168, 163);
+}
+
+.wikiItem:hover {
+  box-shadow: 6px 6px 5px rgb(159, 168, 163);
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+@media (max-width: 1000px) {
+  .header {
+    width: 90%;
+    right: 5px;
+  }
+  .wikiItem {
+    width: 90%;
+    right: 5px;
+  }
 }

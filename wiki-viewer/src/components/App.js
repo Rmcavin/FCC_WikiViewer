@@ -1,7 +1,10 @@
 import React from 'react';
 import Search from './Search'
 import Results from './Results'
+import '../App.css'
 import _ from 'lodash';
+import axios from 'axios';
+import '../font-awesome-4.7.0/css/font-awesome.css';
 
 
 class App extends React.Component {
@@ -16,37 +19,33 @@ class App extends React.Component {
   }
 
   articleSearch(term, results) {
-    //replace any spaces in term with %20
-    var searchTerm = term.replace(/ /g, '%20');
-    //Api Call
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://en.wikipedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=${searchTerm}&gsrlimit=10&origin=*`)
-    xhr.send(null);
-
-    xhr.onreadystatechange = () => {
-      var DONE = 4; //ready state 4 means the request is done
-      var OK = 200; //status 200 is a successful return
-      if (xhr.readyState === DONE) {
-        if (xhr.status === OK) {
-          var output = xhr.responseText;
-          this.setState({results: output}); //the responseText
-          //console.log(this.state.results.title)
-        }
-        else {
-          console.log(`Error: ${xhr.status}`); //error catcher
-        }
-      }
+    if (term !== "") {
+      //replace any spaces in term with %20
+      var searchTerm = term.replace(/ /g, '%20');
+      //Api Call
+      axios({
+        method: 'get',
+        url: `https://en.wikipedia.org/w/api.php?action=query&format=json&generator=search&gsrsearch=${searchTerm}&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&&origin=*`
+      })
+      //update state to API return
+      .then(response => {
+        this.setState({
+          results: response
+        })
+      })
     }
   }
 
-
-
   render() {
-    const articleSearch = _.debounce((term) => {this.articleSearch(term)}, 300);
+    //chokes the frequency of API calls to every 4 seconds, allows for typing
+    const articleSearch = _.debounce((term) => {this.articleSearch(term)}, 400);
     return (
-      <div>
-        <Search onSearchTermChange = {articleSearch}/>
-        <Results results = {this.state.results}/>
+      <div className = "pageWrap">
+        <div className = "header">
+          <h1><i className ="fa fa-wikipedia-w" aria-hidden="true"></i>ikiViewer</h1>
+          <Search onSearchTermChange = {articleSearch}/>
+        </div>
+          <Results results = {this.state.results}/>
       </div>
     )
   }
