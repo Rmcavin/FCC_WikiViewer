@@ -3,6 +3,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # FCC_wikiViewer
 A wiki search app built with the Wikimedia API and React.js.
 
+![wikiViewer App](FCC_wikiViewer/wikiThumbnail.png "wikiViewer")
+
 ## Live demo
 [wikiViewer Demo](https://rmcavin.github.io/FCC_wikiViewer/)
 
